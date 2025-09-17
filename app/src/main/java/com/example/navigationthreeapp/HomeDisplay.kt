@@ -1,17 +1,15 @@
 package com.example.navigationthreeapp
 
 import androidx.compose.animation.ContentTransform
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.unit.IntOffset
 import androidx.navigation3.runtime.entry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
@@ -28,11 +26,8 @@ fun HomeDisplay() {
         backStack = backStack,
         predictivePopTransitionSpec = {
             ContentTransform(
-                targetContentEnter = slideIn(
-                    animationSpec = spring(),
-                    initialOffset = { fullSize -> IntOffset(-fullSize.width, 0) }
-                ) + fadeIn(animationSpec = spring()),
-                initialContentExit = fadeOut(),
+                fadeIn(tween(300)),
+                fadeOut(tween(300))
             )
         },
         entryProvider = entryProvider {
