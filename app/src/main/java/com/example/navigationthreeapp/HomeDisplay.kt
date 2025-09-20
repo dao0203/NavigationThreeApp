@@ -24,7 +24,6 @@ fun HomeDisplay() {
     val backStack = remember { mutableStateListOf<HomeKey>(HomeKey.Screen1) }
     NavDisplay(
         backStack = backStack,
-        onBack = { if (backStack.size > 1) backStack.removeLast() },
         predictivePopTransitionSpec = {
             ContentTransform(
                 fadeIn(tween(300)),
